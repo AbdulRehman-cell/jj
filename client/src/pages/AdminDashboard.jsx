@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'react-serif';
 import axiosInstance from 'axios';
 
 export default function AdminDashboard() {
