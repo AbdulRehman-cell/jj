@@ -1,5 +1,14 @@
 node_modules
-client/node_modules
-client/dist
+**/node_modules
+npm-debug.log
 .git
+.github
 .env
+.env.production
+Dockerfile
+docker-compose.yml
+render.yaml
+README.md
+DEPLOY.md
+client/dist
+client/build

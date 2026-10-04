@@ -1,0 +1,25 @@
+services:
+  # Web Service running our multi-stage Docker container
+  - type: web
+    name: jj-application-service
+    runtime: docker
+    plan: free # Can be upgraded to 'starter' or higher for production scale
+    envVars:
+      - key: PORT
+        value: "10000"
+      - key: NODE_ENV
+        value: production
+      - key: MONGO_URI
+        fromDatabase:
+          name: jj-mongodb-database
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true # Generates a secure random key automatically
+      - key: CORS_ORIGIN
+        value: "https://jj-application-service.onrender.com" # Replace with your custom domain if applicable
+
+databases:
+  # Managed MongoDB Instance (Render provides this via Partner integrations or internal addons depending on plan)
+  - name: jj-mongodb-database
+    databaseName: jj_db
+    plan: free
